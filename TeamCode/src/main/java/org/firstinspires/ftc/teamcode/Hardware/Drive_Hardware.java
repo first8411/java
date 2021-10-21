@@ -18,7 +18,7 @@ public class Drive_Hardware {
 
     // public methods:
     public Drive_Hardware(){
-//        log.i("lol it got nothin");
+
     }
 
     public void init(HardwareMap ahwMap) {
@@ -40,17 +40,16 @@ public class Drive_Hardware {
         }
 
         period.reset();
-
     }
 
 
     // Functions
     public void initClasses(HardwareMap ahwMap) {
         hwMap = ahwMap;
-        leftFrontDrive = hwMap.dcMotor.get("leftFrontDrive");
-        leftBackDrive = hwMap.dcMotor.get("leftBackDrive");
-        rightFrontDrive = hwMap.dcMotor.get("rightFrontDrive");
-        rightBackDrive = hwMap.dcMotor.get("rightBackDrive");
+        leftFrontDrive = hwMap.dcMotor.get("LFD");
+        leftBackDrive = hwMap.dcMotor.get("LBD");
+        rightFrontDrive = hwMap.dcMotor.get("RFD");
+        rightBackDrive = hwMap.dcMotor.get("RBD");
     }
 
     public void motorInit() {

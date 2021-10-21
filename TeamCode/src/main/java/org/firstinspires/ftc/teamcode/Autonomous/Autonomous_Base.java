@@ -17,7 +17,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.Hardware.Drive_Hardware;
 
 @Autonomous(name="Autonomous_Base", group="Testing")
-@Disabled
+//@Disabled
 
 public class Autonomous_Base extends LinearOpMode {
     // create HW map
@@ -29,13 +29,14 @@ public class Autonomous_Base extends LinearOpMode {
     public void runOpMode() {
         // Initialize the program
         robot.init(hardwareMap);
-//        log.i("🚀 Ready to launch!");
+        telemetry.addData("Status", "Ready to launch...");
         waitForStart();
 
         // autonomous
         moveForward();
+        sleep(1000);
         stopMovement();
-//        log.i("✅ WOOOOOOOO!");
+        telemetry.addData("Status", "Completed autonomous!");
 
         // Done!
     }
