@@ -1,3 +1,10 @@
+#
+# This file is a GIT Ignore File. If you are forking this repository and you don't see specific files,
+# it is most likely due to this file, GIT Ignore Files remove selected files that are normally unused.
+# If you need to find a spefic file or directory that you want to keep, use a file editor like Visual Studio Code,
+# and press CTRL + F, search for the file extention or directory, and remove it from this file! :)
+#
+
 *.apk
 *.aar
 *.ap_
