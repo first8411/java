@@ -34,7 +34,7 @@ public class Autonomous_Base extends LinearOpMode {
 
         // autonomous
         moveForward();
-        sleep(1000);
+        sleep(200);
         stopMovement();
         telemetry.addData("Status", "Completed autonomous!");
 
