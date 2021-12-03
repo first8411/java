@@ -3,7 +3,8 @@
  ( _ ) | |/ / |
  / _ \_  _| | |
  \___/ |_||_|_|
-
+Code taken from
+https://github.com/Chris857/FTC-Code/blob/master/src/main/java/org/firstinspires/ftc/teamcode/MultiplexColorSensor.java
 */
 
 package org.firstinspires.ftc.teamcode.Utils;
