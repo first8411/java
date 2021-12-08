@@ -15,16 +15,20 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 
-@TeleOp(name="drive", group="Linear Opmode")
+@TeleOp(name="Decibel_Arm", group="Decibel")
 //@Disabled
-public class Drive extends LinearOpMode {
+public class Decibel_Arm extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
+
     private DcMotor LFD = null;
     private DcMotor LBD = null;
     private DcMotor RFD = null;
     private DcMotor RBD = null;
+
+    private DcMotor Arm = null;
+    private DcMotor Intake = null;
 
     @Override
     public void runOpMode() {
@@ -38,6 +42,9 @@ public class Drive extends LinearOpMode {
         LBD = hardwareMap.get(DcMotor.class, "LBD");
         RFD  = hardwareMap.get(DcMotor.class, "RFD");
         RBD = hardwareMap.get(DcMotor.class, "RBD");
+
+        Arm = hardwareMap.get(DcMotor.class, "Arm");
+        Intake = hardwareMap.get(DcMotor.class, "Intake");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -56,6 +63,10 @@ public class Drive extends LinearOpMode {
             // Setup a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
+            double driveSpeed = 0.5;
+
+            double ArmPower;
+            double IntakePower = 0;
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -72,16 +83,45 @@ public class Drive extends LinearOpMode {
             // leftPower  = -gamepad1.left_stick_y ;
             // rightPower = -gamepad1.right_stick_y ;
 
+            if (gamepad1.dpad_up) {
+                ArmPower = 1;
+            } else if (gamepad1.dpad_down) {
+                ArmPower = -1;
+            } else {
+                ArmPower = 0;
+            }
+
+            if (IntakePower > 0 || IntakePower < 0) {
+                if (gamepad1.x || gamepad1.y) {
+                    IntakePower = 0;
+                }
+            } else {
+                if (gamepad1.x) {
+                    IntakePower = 0.5;
+                } else if (gamepad1.y) {
+                    IntakePower = -0.5;
+                }
+            }
+
+
             // Send calculated power to wheels
-            LFD.setPower(leftPower);
-            LBD.setPower(leftPower);
-            RFD.setPower(rightPower);
-            RBD.setPower(rightPower);
+            LFD.setPower(leftPower * driveSpeed);
+            LBD.setPower(leftPower * driveSpeed);
+            RFD.setPower(rightPower * driveSpeed);
+            RBD.setPower(rightPower * driveSpeed);
+
+            Arm.setPower(ArmPower);
+            Intake.setPower(IntakePower);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
             telemetry.update();
+            //eeeeeeeeeeeeeeeeeeè
+            //lol
+            //no
+            //is code exists now
+            //epic code boi
         }
     }
 }
