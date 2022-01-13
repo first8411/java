@@ -29,7 +29,6 @@ public class Autonomous extends LinearOpMode {
         robot.init(hardwareMap);
         telemetry.addData("Status", "start autonomous i coded thsi in like an hour please work first time i am begging you please pls pls pls thank u i hop so");
         waitForStart();
-        
 
         // get the woah autonomous woah it works no way no way no way no way !
         moveForward();
